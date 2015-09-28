@@ -1,0 +1,9 @@
+export SAT_ROOT=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
+
+export MINISAT_DIR="$SAT_ROOT/minisat"
+
+export PATH="$MINISAT_DIR/install-directory/bin:$PATH"
+
+export LD_LIBRARY_PATH="$MINISAT_DIR/install-directory/lib:$LD_LIBRARY_PATH"
+
+

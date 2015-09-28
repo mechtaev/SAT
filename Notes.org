@@ -1,0 +1,19 @@
+Useful tools:
+
+Solvers:
+http://minisat.se
+http://www.labri.fr/perso/lsimon/glucose/
+http://cs.nyu.edu/~chanseok/cominisatps/
+
+Proof checkers:
+https://www.cs.utexas.edu/~marijn/drat-trim/
+
+Benchmarks:
+http://www.nlsde.buaa.edu.cn/~kexu/benchmarks/benchmarks.htm
+http://www.cs.ubc.ca/~hoos/SATLIB/benchm.html
+http://www.cs.ubc.ca/~babic/index_benchmarks.htm
+http://www.aloul.net/benchmarks.html
+
+Other:
+http://www.satisfiability.org/
+
