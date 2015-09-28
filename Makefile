@@ -2,8 +2,7 @@ MODULES = minisat
 CLEAN_MODULES = $(addprefix clean-, $(MODULES))
 
 help:
-	@echo ~~~~~~~~~~~~~~~~~~ Angelix ~~~~~~~~~~~~~~~~~~
-	@echo Semantics-based Automated Program Repair Tool
+	@echo ~~~~~~~~~~~~~~~~~~~~ SAT ~~~~~~~~~~~~~~~~~~~~
 	@echo
 	@echo \'make all\''                  'build all modules
 	@echo \'make MODULE\''                    'build module
