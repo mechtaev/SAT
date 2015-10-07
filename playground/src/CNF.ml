@@ -2,8 +2,8 @@ open LibExt
 
 module Literal = struct
 
-    type t = Letter of Form.Id.t
-           | Negation of Form.Id.t
+    type t = Letter of Id.t
+           | Negation of Id.t
 
     let compare = Pervasives.compare
 
@@ -15,6 +15,10 @@ module Literal = struct
     let to_form = function
       | Letter id -> Form.Letter id
       | Negation id -> Form.Negation (Form.Letter id)
+
+    let negate = function
+      | Letter id -> Negation id
+      | Negation id -> Letter id
 
   end
 

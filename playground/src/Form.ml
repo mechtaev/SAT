@@ -1,26 +1,5 @@
 open LibExt
 
-module Id = struct
-
-    type t = int
-
-    let last_id = ref 0
-
-    let mk_id () =
-      let id = !last_id in
-      last_id := id + 1;
-      id
-
-    let to_int id = id
-
-    let compare = Pervasives.compare
-
-    let equal = (=)
-
-    let hash i = Hashtbl.hash
-
-  end
-
 type t = Letter of Id.t
        | Conjunction of t * t
        | Disjunction of t * t
@@ -82,19 +61,8 @@ let rec of_disjuncts = function
 (* list of conjuncts *)
 let visualize: t -> string list =
   fun form ->
-  let name_of id =
-    let rec to_char_list id =
-      let to_char i = Char.chr ((Char.code 'a') + i) in
-      let base = (Char.code 'z') - (Char.code 'a') + 1 in
-      if id < base then
-        [to_char id]
-      else
-        (to_char_list (id / base)) @ [to_char (id mod base)]
-    in
-    id |> to_char_list |> String.of_list
-  in
   let to_string = function
-    | Letter id     -> (fun _ -> name_of id)
+    | Letter id     -> (fun _ -> Id.to_string id)
     | Negation _    -> (function [x]    -> Printf.sprintf "~%s" x)
     | Conjunction _ -> (function [x; y] -> Printf.sprintf "(%s & %s)" x y)
     | Disjunction _ -> (function [x; y] -> Printf.sprintf "(%s | %s)" x y)

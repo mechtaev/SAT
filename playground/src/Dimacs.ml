@@ -1,13 +1,13 @@
 open LibExt
 
 let load file =
-  let ids: (int, Form.Id.t) Hashtbl.t = Hashtbl.create 1024 in
+  let ids: (int, Id.t) Hashtbl.t = Hashtbl.create 1024 in
   let literal_of_int i =
     let id =
       if Hashtbl.mem ids (abs i) then
         Hashtbl.find ids (abs i)
       else
-        let id = Form.Id.mk_id () in
+        let id = Id.mk_id () in
         Hashtbl.add ids (abs i) id;
         id
     in
