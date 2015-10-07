@@ -1,5 +1,5 @@
-OCB_FLAGS = -tag bin_annot -I src
 OCB = ocamlbuild $(OCB_FLAGS)
+OCB_FLAGS = -use-ocamlfind -pkgs str -tag bin_annot -tag debug -I src
 
 EXE = dimacs-solver
 EXE_BYTE = $(addsuffix .byte, $(EXE))

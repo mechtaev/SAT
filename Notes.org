@@ -16,4 +16,8 @@ http://www.aloul.net/benchmarks.html
 
 Other:
 http://www.satisfiability.org/
+https://courses.cs.washington.edu/courses/csep573/11wi/lectures/ashish-satsolvers.pdf
+
+Applications:
+Practical  Applications of  Boolean  Satisfiability https://courses.cs.washington.edu/courses/csep573/11wi/lectures/ashish-satsolvers.pdf
 
