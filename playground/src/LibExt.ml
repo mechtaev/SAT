@@ -1,8 +1,6 @@
+(* from batteries *)
+let undefined ?(message="Undefined") _ = failwith message
 
-let not_implemented: 'a. unit -> 'a =
-  fun _ ->
-  failwith "Not implemented";
-  Obj.magic ()
 
 (* Range *)
 let (--) i j = 
@@ -20,6 +18,10 @@ module List = struct
                         
     (* from python *)
     let any = fold_left (||) false
+
+    (* from stackoverflow *)
+    let cartesian l l' = 
+      List.concat (List.map (fun e -> List.map (fun e' -> (e,e')) l') l)
                         
   end
 
@@ -36,11 +38,11 @@ module String = struct
 
     (* from batteries *)
     let of_list l =
-      let res = String.create (List.length l) in
+      let res = Bytes.create (List.length l) in
       let rec imp i = function
         | [] -> res
         | c :: l -> res.[i] <- c; imp (i + 1) l in
-      imp 0 l
+      imp 0 l |> Bytes.to_string
 
     let split_whitespace s =
       Str.split (Str.regexp "[ \t]+") s

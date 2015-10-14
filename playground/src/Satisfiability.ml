@@ -1,9 +1,6 @@
-type assignment = (Id.t, bool) Hashtbl.t
-
-type proof = unit
-
-type t = Satiafiable of assignment option
-       | Unsatisfiable of proof option
+type t = Satisfiable of Interpretation.assignment option
+       | Unsatisfiable of Proof.t option
        | Unknown
+
 
 type solver = CNF.t -> t

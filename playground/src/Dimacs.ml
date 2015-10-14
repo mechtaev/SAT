@@ -1,20 +1,21 @@
 open LibExt
 
+
 let load file =
-  let ids: (int, Id.t) Hashtbl.t = Hashtbl.create 1024 in
+  let letters: (int, Letter.t) Hashtbl.t = Hashtbl.create 1024 in
   let literal_of_int i =
-    let id =
-      if Hashtbl.mem ids (abs i) then
-        Hashtbl.find ids (abs i)
+    let l =
+      if Hashtbl.mem letters (abs i) then
+        Hashtbl.find letters (abs i)
       else
-        let id = Id.mk_id () in
-        Hashtbl.add ids (abs i) id;
-        id
+        let l = Letter.mk_letter () in
+        Hashtbl.add letters (abs i) l;
+        l
     in
     if i > 0 then
-      CNF.Literal.Letter id
+      CNF.Literal.Letter l
     else
-      CNF.Literal.Negation id
+      CNF.Literal.Negation l
   in
   let clauses = ref [] in
   let nbvar = ref (-1) in
@@ -32,10 +33,10 @@ let load file =
         nbclauses := int_of_string nbclauses_str
       else
         let clause = line |> String.split_whitespace
-                          |> (List.map int_of_string)
-                          |> (List.filter (fun x -> x <> 0))
-                          |> (List.map literal_of_int)
-                          |> CNF.LiteralSet.of_list
+                          |> List.map int_of_string
+                          |> List.filter (fun x -> x <> 0)
+                          |> List.map literal_of_int
+                          |> CNF.Clause.of_list
         in
         clauses := clause :: !clauses
     with End_of_file ->
@@ -44,5 +45,6 @@ let load file =
   done;
   List.rev !clauses
 
+
 let dump: CNF.t -> string -> unit =
-  fun cnf file -> not_implemented ()
+  fun cnf file -> undefined ()

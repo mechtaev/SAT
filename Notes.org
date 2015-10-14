@@ -4,6 +4,7 @@ Solvers:
 http://minisat.se
 http://www.labri.fr/perso/lsimon/glucose/
 http://cs.nyu.edu/~chanseok/cominisatps/
+http://fmv.jku.at/cleaneling/
 
 Proof checkers:
 https://www.cs.utexas.edu/~marijn/drat-trim/
@@ -20,4 +21,12 @@ https://courses.cs.washington.edu/courses/csep573/11wi/lectures/ashish-satsolver
 
 Applications:
 Practical  Applications of  Boolean  Satisfiability https://courses.cs.washington.edu/courses/csep573/11wi/lectures/ashish-satsolvers.pdf
+
+Interesting:
+Deciding Effectively Propositional Logic using DPLL and substitution sets
+http://research.microsoft.com/en-us/um/people/leonardo/epr.pdf
+
+SMT:
+Strengthening the Heart of an SMT-Solver: Design and Implementation of Efficient Decision Procedures
+https://tel.archives-ouvertes.fr/file/index/docid/842555/filename/VD2_IGUERNELALA_MOHAMED_10062013.pdf
 
