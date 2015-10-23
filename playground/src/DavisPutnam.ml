@@ -53,7 +53,7 @@ let solve: Satisfiability.solver =
   if blatant_contradiction !res then
     Satisfiability.Unsatisfiable (Some !proof)
   else
-    let assignment: Interpretation.assignment = Hashtbl.create 1024 in
+    let assignment: Truth.assignment = Hashtbl.create 1024 in
     let literals = List.fold_left CNF.Clause.union CNF.Clause.empty !res |> CNF.Clause.elements in
     List.iter (function Letter l -> Hashtbl.add assignment l true
                       | Negation l -> Hashtbl.add assignment l false)

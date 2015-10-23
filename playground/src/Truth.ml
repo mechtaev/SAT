@@ -4,15 +4,15 @@ open LibExt
 type assignment = (Letter.t, bool) Hashtbl.t
 
 
-let of_form: assignment -> Form.t -> bool =
-  fun assignment form ->
+let of_sentence: assignment -> Sentence.t -> bool =
+  fun assignment sentence ->
   let eval = function
-    | Form.Letter l      -> (fun _ -> Hashtbl.find assignment l)
-    | Form.Conjunction _ -> (function [x; y] -> x && y)
-    | Form.Disjunction _ -> (function [x; y] -> x || y)
-    | Form.Negation _    -> (function [x]    -> not x)
+    | Sentence.Letter l      -> (fun _ -> Hashtbl.find assignment l)
+    | Sentence.Conjunction _ -> (function [x; y] -> x && y)
+    | Sentence.Disjunction _ -> (function [x; y] -> x || y)
+    | Sentence.Negation _    -> (function [x]    -> not x)
   in
-  Form.fold eval form
+  Sentence.fold eval sentence
 
 
 let of_cnf: assignment -> CNF.t -> bool =

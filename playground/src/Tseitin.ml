@@ -1,5 +1,5 @@
 open LibExt
 
 
-let transform: Form.t -> CNF.t =
-  fun form -> undefined ()
+let transform: Sentence.t -> CNF.t =
+  fun sentence -> undefined ()

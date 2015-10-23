@@ -8,14 +8,14 @@ module Literal = struct
 
     let compare = Pervasives.compare
 
-    let of_form = function
-      | Form.Letter l -> Letter l
-      | Form.Negation (Form.Letter l) -> Negation l
+    let of_sentence = function
+      | Sentence.Letter l -> Letter l
+      | Sentence.Negation (Sentence.Letter l) -> Negation l
       | _ -> failwith "Literal must be a letter or its negation"
 
-    let to_form = function
-      | Letter l -> Form.Letter l
-      | Negation l -> Form.Negation (Form.Letter l)
+    let to_sentence = function
+      | Letter l -> Sentence.Letter l
+      | Negation l -> Sentence.Negation (Sentence.Letter l)
 
     let negate = function
       | Letter l -> Negation l
@@ -43,19 +43,19 @@ let mem: Literal.t -> t -> bool =
   List.any (List.map (Clause.mem lit) cnf)
 
 
-(* Assume that form is in CNF *)
-let of_form form =
-  form |> Form.to_conjuncts
-       |> List.map Form.to_disjuncts
-       |> List.map @@ List.map @@ Literal.of_form
-       |> List.map Clause.of_list
+(* Assume that sentence is in CNF *)
+let of_sentence sentence =
+  sentence |> Sentence.to_conjuncts
+           |> List.map Sentence.to_disjuncts
+           |> List.map @@ List.map @@ Literal.of_sentence
+           |> List.map Clause.of_list
 
 
-let to_form cnf =
+let to_sentence cnf =
   cnf |> List.map Clause.elements
-      |> List.map @@ List.map @@ Literal.to_form
-      |> List.map Form.of_disjuncts
-      |> Form.of_conjuncts
+      |> List.map @@ List.map @@ Literal.to_sentence
+      |> List.map Sentence.of_disjuncts
+      |> Sentence.of_conjuncts
 
 
 let letters: t -> Letter.t list =

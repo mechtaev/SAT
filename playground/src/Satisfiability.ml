@@ -1,4 +1,4 @@
-type t = Satisfiable of Interpretation.assignment option
+type t = Satisfiable of Truth.assignment option
        | Unsatisfiable of Proof.t option
        | Unknown
 
